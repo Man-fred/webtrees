@@ -626,9 +626,10 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $params = (array) $request->getParsedBody();
-
+        $params = (array) $request->getQueryParams();
         $xref   = $params['xref'];
+        
+        $params = (array) $request->getParsedBody();
         $option = $params['option'];
 
         $individual = Individual::getInstance($xref, $tree);
